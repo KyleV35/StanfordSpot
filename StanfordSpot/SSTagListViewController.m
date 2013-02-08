@@ -23,18 +23,6 @@
 
 #pragma mark Lazy Instantiation
 
-/* Returns an array of SSFlickrPhotos */
-- (NSArray*) getPhotoArray
-{
-    NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
-    NSMutableArray *mutablePhotoDicts = [[NSMutableArray alloc] init];
-    for (NSDictionary* dict in photoDicts) {
-        SSFlickrPhoto* photo = [[SSFlickrPhoto alloc] initWithPhotoDictionary:dict];
-        [mutablePhotoDicts addObject:photo];
-    }
-    return [NSArray arrayWithArray:mutablePhotoDicts];
-}
-
 - (NSDictionary*)tagDictionary
 {
     if (!_tagDictionary) {
@@ -45,40 +33,12 @@
     return _tagDictionary;
 }
 
-- (NSDictionary*)createTagListDictionaryWithPhotoArray:(NSArray*)photos
-{
-    NSMutableDictionary *newTagDictionary = [[NSMutableDictionary alloc] init];
-    for (SSFlickrPhoto* photo in photos) {
-        for (NSString* tag in photo.tags) {
-            NSMutableArray* value = [newTagDictionary objectForKey:tag];
-            if (value == nil) {
-                value = [NSMutableArray arrayWithObject:photo];
-            } else {
-                [value addObject:photo];
-            }
-            [newTagDictionary setObject:value forKey:tag];
-        }
-    }
-    return [NSDictionary dictionaryWithDictionary:newTagDictionary];
-}
-
 - (NSArray*)tagList
 {
     if (!_tagList) {
         _tagList = [self.tagDictionary allKeys];
     }
     return _tagList;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -121,6 +81,38 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark Helper Methods
+
+/* Returns an array of SSFlickrPhotos */
+- (NSArray*) getPhotoArray
+{
+    NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
+    NSMutableArray *mutablePhotoDicts = [[NSMutableArray alloc] init];
+    for (NSDictionary* dict in photoDicts) {
+        SSFlickrPhoto* photo = [[SSFlickrPhoto alloc] initWithPhotoDictionary:dict];
+        [mutablePhotoDicts addObject:photo];
+    }
+    return [NSArray arrayWithArray:mutablePhotoDicts];
+}
+
+/* Create a dictionary that maps from tags to an array of photos associated with those tags.  This is completed by iterating through each photo, grabbing its tags, then adding that same photo to the photo array for each tag. */
+- (NSDictionary*)createTagListDictionaryWithPhotoArray:(NSArray*)photos
+{
+    NSMutableDictionary *newTagDictionary = [[NSMutableDictionary alloc] init];
+    for (SSFlickrPhoto* photo in photos) {
+        for (NSString* tag in photo.tags) {
+            NSMutableArray* value = [newTagDictionary objectForKey:tag];
+            if (value == nil) {
+                value = [NSMutableArray arrayWithObject:photo];
+            } else {
+                [value addObject:photo];
+            }
+            [newTagDictionary setObject:value forKey:tag];
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:newTagDictionary];
 }
 
 @end
