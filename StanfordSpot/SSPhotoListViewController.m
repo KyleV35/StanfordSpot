@@ -7,7 +7,9 @@
 //
 
 #import "SSPhotoListViewController.h"
+#import "SSPhotoDisplayViewController.h"
 #import "SSFlickrPhoto.h"
+#import "FlickrFetcher.h"
 
 @interface SSPhotoListViewController ()
 
@@ -44,17 +46,21 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if ([segue.identifier isEqualToString:@"Photo Selected"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        SSFlickrPhoto* photo = (SSFlickrPhoto*)self.photoArray[indexPath.row];
+        if ([segue.destinationViewController isKindOfClass:[SSPhotoDisplayViewController class]]) {
+            SSPhotoDisplayViewController *vc = (SSPhotoDisplayViewController*)segue.destinationViewController;
+            vc.imageURL = [FlickrFetcher urlForPhoto:photo.photoDict format:FlickrPhotoFormatLarge];
+            vc.title = photo.title;
+        } else {
+            NSLog(@"Segue destinationController for segue: \"%@\" was not a SSPhotoDisplayViewController",segue.identifier);
+        }
+    } else {
+        NSLog(@"Unknown Segue: %@",segue.identifier);
+    }
 }
 
 @end

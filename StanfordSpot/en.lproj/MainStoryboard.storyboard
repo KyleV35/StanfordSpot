@@ -73,11 +73,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo List Cell" textLabel="Wr0-Xp-9Dd" detailTextLabel="5Yy-71-te8" style="IBUITableViewCellStyleSubtitle" id="pBJ-tX-gpH">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo List Cell" textLabel="Wr0-Xp-9Dd" detailTextLabel="5Yy-71-te8" style="IBUITableViewCellStyleSubtitle" id="pBJ-tX-gpH">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wr0-Xp-9Dd">
@@ -93,6 +93,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="RaB-P8-Hcc" kind="push" identifier="Photo Selected" id="7BD-zF-oHD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,6 +108,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOh-qw-pAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1285" y="-209"/>
+        </scene>
+        <!--Photo Display View Controller-->
+        <scene sceneID="sDZ-mj-uBO">
+            <objects>
+                <viewController id="RaB-P8-Hcc" customClass="SSPhotoDisplayViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V4x-sM-tW5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CmC-cm-9Iq"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="leading" secondItem="V4x-sM-tW5" secondAttribute="leading" type="default" id="ETj-PT-ot4"/>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="trailing" secondItem="V4x-sM-tW5" secondAttribute="trailing" type="default" id="G1m-AI-H2h"/>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="top" secondItem="V4x-sM-tW5" secondAttribute="top" type="default" id="ime-gE-CMu"/>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="bottom" secondItem="V4x-sM-tW5" secondAttribute="bottom" type="default" id="u0p-oy-Vnk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0t1-CX-caR"/>
+                    <connections>
+                        <outlet property="scrollView" destination="CmC-cm-9Iq" id="Q5x-V5-fzm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yvL-HP-JwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1646" y="-207"/>
         </scene>
         <!--Table View Controller - Root View Controller-->
         <scene sceneID="CfI-xx-iQw">
@@ -177,14 +207,6 @@
             <point key="canvasLocation" x="309" y="-189"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="SSPhotoListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoListViewController.h"/>
-        </class>
-        <class className="SSTagListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTagListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
