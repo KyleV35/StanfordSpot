@@ -23,20 +23,20 @@
             </objects>
             <point key="canvasLocation" x="-251" y="-2"/>
         </scene>
-        <!--Tag List View Controller - Root View Controller-->
+        <!--Tag List View Controller - SPoT-->
         <scene sceneID="tMP-1k-4ul">
             <objects>
-                <tableViewController id="E9L-kw-buW" customClass="SSTagListViewController" sceneMemberID="viewController">
+                <tableViewController title="SPoT" id="E9L-kw-buW" customClass="SSTagListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="asZ-f6-UWy">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo List Cell" textLabel="Cc8-2s-I8W" detailTextLabel="dL9-F8-51k" style="IBUITableViewCellStyleSubtitle" id="dDS-dJ-Api">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tag List Cell" textLabel="Cc8-2s-I8W" detailTextLabel="dL9-F8-51k" style="IBUITableViewCellStyleSubtitle" id="dDS-dJ-Api">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc8-2s-I8W">
@@ -52,14 +52,59 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="wMp-AE-exc" kind="push" identifier="Tag Selected" id="4dR-g5-Vma"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ouf-VZ-bc1"/>
+                    <navigationItem key="navigationItem" title="SPoT" id="ouf-VZ-bc1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fby-NR-rvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-189"/>
+            <point key="canvasLocation" x="833" y="-189"/>
+        </scene>
+        <!--Photo List View Controller-->
+        <scene sceneID="SHr-Ou-XSj">
+            <objects>
+                <tableViewController id="wMp-AE-exc" customClass="SSPhotoListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G4B-LR-WMi">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo List Cell" textLabel="Wr0-Xp-9Dd" detailTextLabel="5Yy-71-te8" style="IBUITableViewCellStyleSubtitle" id="pBJ-tX-gpH">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wr0-Xp-9Dd">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yy-71-te8">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wMp-AE-exc" id="pUd-cj-G0s"/>
+                            <outlet property="delegate" destination="wMp-AE-exc" id="U8Y-wX-emk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="C5u-T8-3kh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aOh-qw-pAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1285" y="-209"/>
         </scene>
         <!--Table View Controller - Root View Controller-->
         <scene sceneID="CfI-xx-iQw">
@@ -133,6 +178,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="SSPhotoListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoListViewController.h"/>
+        </class>
         <class className="SSTagListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTagListViewController.h"/>
         </class>

@@ -20,6 +20,7 @@
 		9A76B27A16C4DD5D0087B8D7 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B27916C4DD5D0087B8D7 /* FlickrFetcher.m */; };
 		9A76B28016C4E1BD0087B8D7 /* SSTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */; };
 		9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */; };
+		9A76B28716C4FF580087B8D7 /* SSPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTagListViewController.m; sourceTree = "<group>"; };
 		9A76B28216C4EA540087B8D7 /* SSFlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSFlickrPhoto.h; path = Model/SSFlickrPhoto.h; sourceTree = "<group>"; };
 		9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSFlickrPhoto.m; path = Model/SSFlickrPhoto.m; sourceTree = "<group>"; };
+		9A76B28516C4FF580087B8D7 /* SSPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoListViewController.h; sourceTree = "<group>"; };
+		9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				9A76B25F16C4DAEB0087B8D7 /* SSAppDelegate.h */,
 				9A76B26016C4DAEB0087B8D7 /* SSAppDelegate.m */,
 				9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */,
+				9A76B28516C4FF580087B8D7 /* SSPhotoListViewController.h */,
+				9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */,
 				9A76B25716C4DAEB0087B8D7 /* Supporting Files */,
 				9A76B27E16C4E1BD0087B8D7 /* SSTagListViewController.h */,
 				9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */,
@@ -207,6 +212,7 @@
 				9A76B27A16C4DD5D0087B8D7 /* FlickrFetcher.m in Sources */,
 				9A76B28016C4E1BD0087B8D7 /* SSTagListViewController.m in Sources */,
 				9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */,
+				9A76B28716C4FF580087B8D7 /* SSPhotoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

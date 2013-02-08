@@ -7,6 +7,7 @@
 //
 
 #import "SSTagListViewController.h"
+#import "SSPhotoListViewController.h"
 #import "FlickrFetcher.h"
 #import "SSFlickrPhoto.h"
 
@@ -57,7 +58,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Photo List Cell";
+    static NSString *CellIdentifier = @"Tag List Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     //Configure Cell
@@ -81,6 +82,25 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Tag Selected"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        NSString *tag = self.tagList[indexPath.row];
+        NSArray *photoArrayForTag = self.tagDictionary[tag];
+        if ([segue.destinationViewController isKindOfClass:[SSPhotoListViewController class]]) {
+            SSPhotoListViewController *vc = (SSPhotoListViewController*)segue.destinationViewController;
+            vc.photoArray = photoArrayForTag;
+            vc.title = [tag capitalizedString];
+        } else {
+            NSLog(@"Segue destinationViewController for segue: \"%@\" was not an SSPhotoListViewController!",segue.identifier);
+            exit(1);
+        }
+    } else {
+        NSLog(@"Unknown segue identifier: %@",segue.identifier);
+    }
 }
 
 #pragma mark Helper Methods
