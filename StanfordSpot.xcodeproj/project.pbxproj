@@ -17,7 +17,9 @@
 		9A76B26516C4DAEB0087B8D7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A76B26416C4DAEB0087B8D7 /* Default@2x.png */; };
 		9A76B26716C4DAEB0087B8D7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A76B26616C4DAEB0087B8D7 /* Default-568h@2x.png */; };
 		9A76B26A16C4DAEB0087B8D7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */; };
-		9A76B26D16C4DAEB0087B8D7 /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B26C16C4DAEB0087B8D7 /* SSViewController.m */; };
+		9A76B27A16C4DD5D0087B8D7 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B27916C4DD5D0087B8D7 /* FlickrFetcher.m */; };
+		9A76B28016C4E1BD0087B8D7 /* SSTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */; };
+		9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +37,13 @@
 		9A76B26416C4DAEB0087B8D7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9A76B26616C4DAEB0087B8D7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9A76B26916C4DAEB0087B8D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9A76B26B16C4DAEB0087B8D7 /* SSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
-		9A76B26C16C4DAEB0087B8D7 /* SSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		9A76B27716C4DD5D0087B8D7 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		9A76B27816C4DD5D0087B8D7 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		9A76B27916C4DD5D0087B8D7 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		9A76B27E16C4E1BD0087B8D7 /* SSTagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTagListViewController.h; sourceTree = "<group>"; };
+		9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTagListViewController.m; sourceTree = "<group>"; };
+		9A76B28216C4EA540087B8D7 /* SSFlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSFlickrPhoto.h; path = Model/SSFlickrPhoto.h; sourceTree = "<group>"; };
+		9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSFlickrPhoto.m; path = Model/SSFlickrPhoto.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 		9A76B24116C4DAEB0087B8D7 = {
 			isa = PBXGroup;
 			children = (
+				9A76B27616C4DD5D0087B8D7 /* FlickrFetcher */,
 				9A76B25616C4DAEB0087B8D7 /* StanfordSpot */,
 				9A76B24F16C4DAEB0087B8D7 /* Frameworks */,
 				9A76B24D16C4DAEB0087B8D7 /* Products */,
@@ -83,12 +91,13 @@
 		9A76B25616C4DAEB0087B8D7 /* StanfordSpot */ = {
 			isa = PBXGroup;
 			children = (
+				9A76B28116C4EA2C0087B8D7 /* Model */,
 				9A76B25F16C4DAEB0087B8D7 /* SSAppDelegate.h */,
 				9A76B26016C4DAEB0087B8D7 /* SSAppDelegate.m */,
 				9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */,
-				9A76B26B16C4DAEB0087B8D7 /* SSViewController.h */,
-				9A76B26C16C4DAEB0087B8D7 /* SSViewController.m */,
 				9A76B25716C4DAEB0087B8D7 /* Supporting Files */,
+				9A76B27E16C4E1BD0087B8D7 /* SSTagListViewController.h */,
+				9A76B27F16C4E1BD0087B8D7 /* SSTagListViewController.m */,
 			);
 			path = StanfordSpot;
 			sourceTree = "<group>";
@@ -105,6 +114,25 @@
 				9A76B26616C4DAEB0087B8D7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A76B27616C4DD5D0087B8D7 /* FlickrFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				9A76B27716C4DD5D0087B8D7 /* FlickrAPIKey.h */,
+				9A76B27816C4DD5D0087B8D7 /* FlickrFetcher.h */,
+				9A76B27916C4DD5D0087B8D7 /* FlickrFetcher.m */,
+			);
+			path = FlickrFetcher;
+			sourceTree = "<group>";
+		};
+		9A76B28116C4EA2C0087B8D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A76B28216C4EA540087B8D7 /* SSFlickrPhoto.h */,
+				9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +204,9 @@
 			files = (
 				9A76B25D16C4DAEB0087B8D7 /* main.m in Sources */,
 				9A76B26116C4DAEB0087B8D7 /* SSAppDelegate.m in Sources */,
-				9A76B26D16C4DAEB0087B8D7 /* SSViewController.m in Sources */,
+				9A76B27A16C4DD5D0087B8D7 /* FlickrFetcher.m in Sources */,
+				9A76B28016C4E1BD0087B8D7 /* SSTagListViewController.m in Sources */,
+				9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

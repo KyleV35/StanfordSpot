@@ -1,5 +1,5 @@
 //
-//  SSViewController.h
+//  SSTagListViewController.h
 //  StanfordSpot
 //
 //  Created by Kyle Vermeer on 2/7/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSViewController : UIViewController
+@interface SSTagListViewController : UITableViewController
 
 @end
