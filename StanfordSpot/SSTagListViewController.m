@@ -9,7 +9,7 @@
 #import "SSTagListViewController.h"
 #import "SSPhotoListViewController.h"
 #import "FlickrFetcher.h"
-#import "SSFlickrPhoto.h"
+#import "SSRecentlyViewedPhotos.h"
 
 @interface SSTagListViewController ()
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SSFlickrPhoto.h"
+
 @interface SSTagListViewController : UITableViewController
 
 @end

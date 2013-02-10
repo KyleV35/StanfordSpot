@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSFlickrPhoto.h"
 
 @interface SSPhotoListViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray* photoArray;
+
+- (void) photoWasSelected:(SSFlickrPhoto*)photo;
 
 @end

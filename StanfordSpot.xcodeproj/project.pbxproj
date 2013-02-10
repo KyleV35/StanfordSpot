@@ -22,6 +22,8 @@
 		9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */; };
 		9A76B28716C4FF580087B8D7 /* SSPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */; };
 		9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */; };
+		9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */; };
+		9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,10 @@
 		9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoListViewController.m; sourceTree = "<group>"; };
 		9A76B28816C504D80087B8D7 /* SSPhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoDisplayViewController.h; sourceTree = "<group>"; };
 		9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoDisplayViewController.m; sourceTree = "<group>"; };
+		9AE2542416C5A05600E1266F /* SSRecentlyViewedPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSRecentlyViewedPhotos.h; path = Model/SSRecentlyViewedPhotos.h; sourceTree = "<group>"; };
+		9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSRecentlyViewedPhotos.m; path = Model/SSRecentlyViewedPhotos.m; sourceTree = "<group>"; };
+		9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRecentPhotoListViewController.h; sourceTree = "<group>"; };
+		9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRecentPhotoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 				9A76B28816C504D80087B8D7 /* SSPhotoDisplayViewController.h */,
 				9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */,
 				9A76B28516C4FF580087B8D7 /* SSPhotoListViewController.h */,
+				9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */,
+				9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */,
 				9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */,
 				9A76B25716C4DAEB0087B8D7 /* Supporting Files */,
 				9A76B27E16C4E1BD0087B8D7 /* SSTagListViewController.h */,
@@ -141,6 +149,8 @@
 			children = (
 				9A76B28216C4EA540087B8D7 /* SSFlickrPhoto.h */,
 				9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */,
+				9AE2542416C5A05600E1266F /* SSRecentlyViewedPhotos.h */,
+				9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -219,6 +229,8 @@
 				9A76B28416C4EA540087B8D7 /* SSFlickrPhoto.m in Sources */,
 				9A76B28716C4FF580087B8D7 /* SSPhotoListViewController.m in Sources */,
 				9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */,
+				9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */,
+				9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +347,7 @@
 				9A76B27216C4DAEB0087B8D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

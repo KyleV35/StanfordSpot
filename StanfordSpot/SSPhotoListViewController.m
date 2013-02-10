@@ -8,8 +8,8 @@
 
 #import "SSPhotoListViewController.h"
 #import "SSPhotoDisplayViewController.h"
-#import "SSFlickrPhoto.h"
 #import "FlickrFetcher.h"
+#import "SSRecentlyViewedPhotos.h"
 
 @interface SSPhotoListViewController ()
 
@@ -52,6 +52,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         SSFlickrPhoto* photo = (SSFlickrPhoto*)self.photoArray[indexPath.row];
         if ([segue.destinationViewController isKindOfClass:[SSPhotoDisplayViewController class]]) {
+            [self photoWasSelected:photo];
             SSPhotoDisplayViewController *vc = (SSPhotoDisplayViewController*)segue.destinationViewController;
             vc.imageURL = [FlickrFetcher urlForPhoto:photo.photoDict format:FlickrPhotoFormatLarge];
             vc.title = photo.title;
@@ -61,6 +62,11 @@
     } else {
         NSLog(@"Unknown Segue: %@",segue.identifier);
     }
+}
+
+- (void) photoWasSelected:(SSFlickrPhoto *)photo
+{
+    [SSRecentlyViewedPhotos addPhoto:photo];
 }
 
 @end
