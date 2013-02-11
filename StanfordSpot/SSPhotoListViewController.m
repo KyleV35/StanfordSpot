@@ -11,7 +11,7 @@
 #import "FlickrFetcher.h"
 #import "SSRecentlyViewedPhotos.h"
 
-@interface SSPhotoListViewController ()
+@interface SSPhotoListViewController () <UISplitViewControllerDelegate>
 
 @end
 
