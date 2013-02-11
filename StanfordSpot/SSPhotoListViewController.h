@@ -12,7 +12,9 @@
 @interface SSPhotoListViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray* photoArray;
+@property (strong, nonatomic) NSSortDescriptor* sortDescriptor;
 
+/* Can be over-ridden by subclass if needed.  Adds selected photo to recents*/
 - (void) photoWasSelected:(SSFlickrPhoto*)photo;
 
 @end

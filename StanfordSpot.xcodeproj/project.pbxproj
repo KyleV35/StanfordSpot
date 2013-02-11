@@ -104,14 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				9A76B28116C4EA2C0087B8D7 /* Model */,
-				9A76B25F16C4DAEB0087B8D7 /* SSAppDelegate.h */,
-				9A76B26016C4DAEB0087B8D7 /* SSAppDelegate.m */,
 				9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */,
 				9A76B28816C504D80087B8D7 /* SSPhotoDisplayViewController.h */,
 				9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */,
-				9A76B28516C4FF580087B8D7 /* SSPhotoListViewController.h */,
 				9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */,
 				9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */,
+				9A76B28516C4FF580087B8D7 /* SSPhotoListViewController.h */,
 				9A76B28616C4FF580087B8D7 /* SSPhotoListViewController.m */,
 				9A76B25716C4DAEB0087B8D7 /* Supporting Files */,
 				9A76B27E16C4E1BD0087B8D7 /* SSTagListViewController.h */,
@@ -123,6 +121,8 @@
 		9A76B25716C4DAEB0087B8D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A76B25F16C4DAEB0087B8D7 /* SSAppDelegate.h */,
+				9A76B26016C4DAEB0087B8D7 /* SSAppDelegate.m */,
 				9A76B25816C4DAEB0087B8D7 /* StanfordSpot-Info.plist */,
 				9A76B25916C4DAEB0087B8D7 /* InfoPlist.strings */,
 				9A76B25C16C4DAEB0087B8D7 /* main.m */,

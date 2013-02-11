@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SSFlickrPhoto.h"
 
+// Use UserDefaults to store recently view photos
 @interface SSRecentlyViewedPhotos : NSObject
 
 + (NSArray*) recentlyViewedPhotos;

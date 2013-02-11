@@ -24,7 +24,13 @@
 
 - (void) photoWasSelected:(SSFlickrPhoto *)photo
 {
-    //Do nothing
+    //Do nothing, don't want to add a photo from recents to recents
+}
+
+- (NSSortDescriptor*)sortDescriptor
+{
+    // Don't sort recents, they are already sorted by time
+    return nil;
 }
 
 @end

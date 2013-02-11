@@ -20,6 +20,20 @@
 
 #pragma mark - Table view data source
 
+-(void) setPhotoArray:(NSArray *)photoArray
+{
+    if (self.sortDescriptor) {
+        _photoArray = [photoArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:self.sortDescriptor]];
+    } else {
+        _photoArray = photoArray;
+    }
+}
+
+- (NSSortDescriptor*)sortDescriptor
+{
+    return [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.

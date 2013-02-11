@@ -44,8 +44,6 @@
     self.hasBeenZoomed = YES;
 }
 
-
-
 - (void)resetImage
 {
     if (self.scrollView) {
@@ -82,6 +80,7 @@
 
 - (void) viewDidLayoutSubviews
 {
+    // Only autozoom if the user has not manually zoomed
     if (!self.hasBeenZoomed) {
         self.scrollView.zoomScale = [self autoCalculateZoomValue];
     }
@@ -89,10 +88,10 @@
 
 - (CGFloat)autoCalculateZoomValue
 {
-    //Default remains the same
     CGFloat widthZoomFactor = self.scrollView.bounds.size.width/self.imageView.bounds.size.width;
     CGFloat heightZoomFactor = self.scrollView.bounds.size.height/self.imageView.bounds.size.height;
     CGFloat smallerZoomFactor = MAX(widthZoomFactor, heightZoomFactor);
+    //If the smaller of the zoom factors is above one, force that dimension to fit on screen
     if (smallerZoomFactor < 1.0f) {
         return smallerZoomFactor > self.scrollView.minimumZoomScale ? smallerZoomFactor : self.scrollView.minimumZoomScale;
     }

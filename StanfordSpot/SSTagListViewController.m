@@ -37,7 +37,7 @@
 - (NSArray*)tagList
 {
     if (!_tagList) {
-        _tagList = [self.tagDictionary allKeys];
+        _tagList = [[self.tagDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     }
     return _tagList;
 }
@@ -121,5 +121,7 @@
     }
     return [NSDictionary dictionaryWithDictionary:newTagDictionary];
 }
+                    
+
 
 @end
