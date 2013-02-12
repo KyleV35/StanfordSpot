@@ -12,9 +12,10 @@
 #import "SSRecentlyViewedPhotos.h"
 #import "SSPhotoDisplayViewController.h"
 
-@interface SSTagListViewController ()
+@interface SSTagListViewController () <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary* tagDictionary;
+@property (weak, nonatomic) UISplitViewController *splitViewController;
 
 /* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
@@ -146,7 +147,25 @@
     [mutToolBarItems removeObject:barButtonItem];
     [detail.toolbar setItems:mutToolBarItems animated:YES];
 }
-                    
+
+- (void) awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+
+- (UISplitViewController*) splitViewController
+{
+    if (!_splitViewController) {
+        UIViewController *vc = [self.tabBarController parentViewController].parentViewController;
+        if ([vc isKindOfClass:[UISplitViewController class]]) {
+            UISplitViewController* svc = (UISplitViewController*)vc;
+            _splitViewController = svc;
+        }
+    }
+    return _splitViewController;
+}
+
 
 
 @end
