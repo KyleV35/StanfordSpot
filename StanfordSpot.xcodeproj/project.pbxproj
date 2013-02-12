@@ -24,8 +24,6 @@
 		9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */; };
 		9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */; };
 		9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */; };
-		9AE2543916C8DDBA00E1266F /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2543816C8DDBA00E1266F /* iPad.storyboard */; };
-		9AF5902016C8F20E005E631C /* SSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5901F16C8F20E005E631C /* SSDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,9 +56,6 @@
 		9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSRecentlyViewedPhotos.m; path = Model/SSRecentlyViewedPhotos.m; sourceTree = "<group>"; };
 		9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRecentPhotoListViewController.h; sourceTree = "<group>"; };
 		9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRecentPhotoListViewController.m; sourceTree = "<group>"; };
-		9AE2543816C8DDBA00E1266F /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
-		9AF5901E16C8F20E005E631C /* SSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDetailViewController.h; sourceTree = "<group>"; };
-		9AF5901F16C8F20E005E631C /* SSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +105,6 @@
 			children = (
 				9A76B28116C4EA2C0087B8D7 /* Model */,
 				9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */,
-				9AE2543816C8DDBA00E1266F /* iPad.storyboard */,
-				9AF5901E16C8F20E005E631C /* SSDetailViewController.h */,
-				9AF5901F16C8F20E005E631C /* SSDetailViewController.m */,
 				9A76B28816C504D80087B8D7 /* SSPhotoDisplayViewController.h */,
 				9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */,
 				9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */,
@@ -220,7 +212,6 @@
 				9A76B26516C4DAEB0087B8D7 /* Default@2x.png in Resources */,
 				9A76B26716C4DAEB0087B8D7 /* Default-568h@2x.png in Resources */,
 				9A76B26A16C4DAEB0087B8D7 /* MainStoryboard.storyboard in Resources */,
-				9AE2543916C8DDBA00E1266F /* iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +231,6 @@
 				9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */,
 				9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */,
 				9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */,
-				9AF5902016C8F20E005E631C /* SSDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,9 +312,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StanfordSpot/StanfordSpot-Prefix.pch";
 				INFOPLIST_FILE = "StanfordSpot/StanfordSpot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -335,9 +323,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StanfordSpot/StanfordSpot-Prefix.pch";
 				INFOPLIST_FILE = "StanfordSpot/StanfordSpot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
