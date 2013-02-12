@@ -69,7 +69,7 @@
             [self photoWasSelected:photo];
             SSPhotoDisplayViewController *vc = (SSPhotoDisplayViewController*)segue.destinationViewController;
             vc.imageURL = [FlickrFetcher urlForPhoto:photo.photoDict format:FlickrPhotoFormatLarge];
-            vc.showMasterButton = self.showMasterButton;
+            vc.showListsButton = self.showListsButton;
             vc.title = photo.title;
         } else {
             NSLog(@"Segue destinationController for segue: \"%@\" was not a SSPhotoDisplayViewController",segue.identifier);

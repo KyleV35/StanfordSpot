@@ -83,9 +83,9 @@
 
 - (void) placeShowMasterButtonOnToolbar
 {
-    if (self.showMasterButton) {
+    if (self.showListsButton) {
         NSMutableArray* mutToolBarItems = [self.toolbar.items mutableCopy];
-        [mutToolBarItems insertObject:self.showMasterButton atIndex:0];
+        [mutToolBarItems insertObject:self.showListsButton atIndex:0];
         self.toolbar.items = mutToolBarItems;
     }
 }
@@ -112,6 +112,27 @@
         return biggerZoomFactor < self.scrollView.maximumZoomScale ? biggerZoomFactor : self.scrollView.maximumZoomScale;
     }
     return self.scrollView.zoomScale;
+}
+
+-(void)setShowListsButton:(UIBarButtonItem *)showMasterButton
+{
+    if (showMasterButton) {
+        _showListsButton = showMasterButton;
+        [self placeShowMasterButtonOnToolbar];
+    } else {
+        [self removeShowMasterButtonFromToolbar];
+        _showListsButton = showMasterButton;
+    
+    }
+}
+
+- (void) removeShowMasterButtonFromToolbar
+{
+    if (_showListsButton) {
+        NSMutableArray* mutToolBarItems = [self.toolbar.items mutableCopy];
+        [mutToolBarItems removeObject:_showListsButton];
+        self.toolbar.items = mutToolBarItems;
+    }
 }
 
 @end

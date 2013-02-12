@@ -59,13 +59,29 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QbA-cV-Dn2" kind="relationship" relationship="viewControllers" id="UEh-Qb-g2l"/>
-                        <segue destination="8WB-7G-5T5" kind="relationship" relationship="viewControllers" id="cxv-Is-QZt"/>
+                        <segue destination="52X-df-woa" kind="relationship" relationship="viewControllers" id="wLc-83-P3m"/>
+                        <segue destination="IAA-4c-1AM" kind="relationship" relationship="viewControllers" id="mdR-IM-O5n"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8H6-NX-tka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="-924"/>
+            <point key="canvasLocation" x="310" y="-1088"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T8F-CX-kCz">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="IAA-4c-1AM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="2jr-6o-PEQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhK-n2-O4T">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8WB-7G-5T5" kind="relationship" relationship="rootViewController" id="Yby-5F-SBj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aUU-5P-FVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="722" y="-294"/>
         </scene>
         <!--Recent Photo List View Controller - Recents-->
         <scene sceneID="Xo9-7O-TCe">
@@ -113,6 +129,22 @@
             </objects>
             <point key="canvasLocation" x="1112" y="-305"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jtu-dh-NCp">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="52X-df-woa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="uc0-Ni-5gC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P8R-3z-lAR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QbA-cV-Dn2" kind="relationship" relationship="rootViewController" id="3fZ-IS-g3H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0D-O5-BmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="-1281"/>
+        </scene>
         <!--Tag List View Controller - SPoT-->
         <scene sceneID="Qhr-il-fvJ">
             <objects>
@@ -157,7 +189,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5q-Mg-E5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="-1247"/>
+            <point key="canvasLocation" x="1139" y="-1287"/>
         </scene>
         <!--Photo List View Controller-->
         <scene sceneID="rBm-bP-ztP">
@@ -202,22 +234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eR8-P9-Mk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="-1247"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aDB-Sd-Vgy">
-            <objects>
-                <navigationController id="mao-A3-5aP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yKO-lB-CMj">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="m4O-Ka-naQ" kind="relationship" relationship="rootViewController" id="ppR-At-JlI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wED-EB-bzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="253" y="-924"/>
+            <point key="canvasLocation" x="1514" y="-1271"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="AVK-Ok-23F">
@@ -225,8 +242,8 @@
                 <splitViewController id="lPF-3a-EJU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
-                        <segue destination="mao-A3-5aP" kind="relationship" relationship="masterViewController" id="5bD-F5-4M2"/>
                         <segue destination="sXL-Fh-qaU" kind="relationship" relationship="detailViewController" id="kPx-uM-3VQ"/>
+                        <segue destination="m4O-Ka-naQ" kind="relationship" relationship="masterViewController" id="s4T-dk-mNb"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7g-4h-zua" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,6 +279,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kPx-uM-3VQ"/>
+        <segue reference="9qZ-tQ-zrT"/>
     </inferredMetricsTieBreakers>
 </document>

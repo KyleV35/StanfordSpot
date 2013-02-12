@@ -12,4 +12,6 @@
 
 @interface SSTagListViewController : UITableViewController
 
+@property (strong, nonatomic) UIBarButtonItem* showListsButton;
+
 @end

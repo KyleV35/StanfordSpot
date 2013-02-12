@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSURL* imageURL;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (strong, nonatomic) UIBarButtonItem* showMasterButton;
+@property (weak, nonatomic) UIBarButtonItem* showListsButton;
 
 @end

@@ -11,13 +11,14 @@
 #import "FlickrFetcher.h"
 #import "SSRecentlyViewedPhotos.h"
 #import "SSPhotoDisplayViewController.h"
+#import "SSRecentPhotoListViewController.h"
 
 @interface SSTagListViewController () <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary* tagDictionary;
 
 @property (weak, nonatomic) UISplitViewController* splitViewController;
-@property (strong, nonatomic) UIBarButtonItem* showMasterButton;
+@property (weak, nonatomic) SSRecentPhotoListViewController* recentsController;
 
 /* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
@@ -85,8 +86,8 @@
         NSArray *photoArrayForTag = self.tagDictionary[tag];
         if ([segue.destinationViewController isKindOfClass:[SSPhotoListViewController class]]) {
             SSPhotoListViewController *vc = (SSPhotoListViewController*)segue.destinationViewController;
-            vc.showMasterButton = self.showMasterButton;
             vc.photoArray = photoArrayForTag;
+            vc.showListsButton = self.showListsButton;
             vc.title = [tag capitalizedString];
         } else {
             NSLog(@"Segue destinationViewController for segue: \"%@\" was not an SSPhotoListViewController!",segue.identifier);
@@ -136,27 +137,35 @@
            withBarButtonItem:(UIBarButtonItem *)barButtonItem
         forPopoverController:(UIPopoverController *)pc
 {
-    barButtonItem.title = @"Show";
+    // Set title for bar button item
+    barButtonItem.title = @"Show Lists";
+    // Set current detail to new bar button item
     SSPhotoDisplayViewController *detail = svc.viewControllers[DETAIL_VIEW_CONTROLLER_INDEX];
-    NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
-    [mutToolBarItems insertObject:barButtonItem atIndex:0];
-    detail.toolbar.items = mutToolBarItems;
-    self.showMasterButton = barButtonItem;
+    detail.showListsButton = barButtonItem;
     
-    UIViewController* otherViewController = [self.tabBarController.viewControllers lastObject];
-    if ([otherViewController respondsToSelector:@selector(setShowMasterButton:)]) {
-        [otherViewController performSelector:@selector(setShowMasterButton:) withObject:barButtonItem];
-    }
+    //Update child view controllers with new barButtonItem
+    [self setShowMasterButtonForAllChildren:barButtonItem];
     
+    //Update recents with new barButtonItem
+    SSRecentPhotoListViewController* recents = self.recentsController;
+    recents.showListsButton = barButtonItem;
 }
 
 - (void) splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
+    // Set current detail to nil
     SSPhotoDisplayViewController *detail = svc.viewControllers[DETAIL_VIEW_CONTROLLER_INDEX];
-    NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
-    [mutToolBarItems removeObject:barButtonItem];
-    [detail.toolbar setItems:mutToolBarItems animated:YES];
+    detail.showListsButton = nil;
+    
+    //Update child view controllers with nil
+    [self setShowMasterButtonForAllChildren:nil];
+    
+    //Update recents with nil
+    SSRecentPhotoListViewController* recents = self.recentsController;
+    recents.showListsButton = nil;
 }
+
+#pragma mark iPad helpers
 
 - (void)awakeFromNib
 {
@@ -166,12 +175,30 @@
 - (UISplitViewController*) splitViewController
 {
     if (!_splitViewController) {
-        UIViewController* vc = self.tabBarController.parentViewController.parentViewController;
+        UIViewController* vc = self.tabBarController.parentViewController;
         if ([vc isKindOfClass:[UISplitViewController class]]) {
             _splitViewController = (UISplitViewController*)vc;
         }
     }
     return _splitViewController;
+}
+
+#define RECENTS_TAB_BAR_INDEX 1
+
+- (SSRecentPhotoListViewController*) recentsController
+{
+    UINavigationController* recentsNav = self.tabBarController.viewControllers[RECENTS_TAB_BAR_INDEX];
+    return (SSRecentPhotoListViewController*)recentsNav.topViewController;
+}
+
+- (void) setShowMasterButtonForAllChildren:(UIBarButtonItem*)button
+{
+    // Get nav controller and all its children (including self)
+    for (UIViewController* vc in self.navigationController.viewControllers) {
+        if ([vc respondsToSelector:@selector(setShowListsButton:)]) {
+            [vc performSelector:@selector(setShowListsButton:) withObject:button];
+        }
+    }
 }
                     
 
