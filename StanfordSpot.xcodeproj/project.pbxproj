@@ -25,6 +25,7 @@
 		9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */; };
 		9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */; };
 		9AE2543916C8DDBA00E1266F /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2543816C8DDBA00E1266F /* iPad.storyboard */; };
+		9AF5902016C8F20E005E631C /* SSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5901F16C8F20E005E631C /* SSDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRecentPhotoListViewController.h; sourceTree = "<group>"; };
 		9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRecentPhotoListViewController.m; sourceTree = "<group>"; };
 		9AE2543816C8DDBA00E1266F /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		9AF5901E16C8F20E005E631C /* SSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDetailViewController.h; sourceTree = "<group>"; };
+		9AF5901F16C8F20E005E631C /* SSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				9A76B28116C4EA2C0087B8D7 /* Model */,
 				9A76B26816C4DAEB0087B8D7 /* MainStoryboard.storyboard */,
 				9AE2543816C8DDBA00E1266F /* iPad.storyboard */,
+				9AF5901E16C8F20E005E631C /* SSDetailViewController.h */,
+				9AF5901F16C8F20E005E631C /* SSDetailViewController.m */,
 				9A76B28816C504D80087B8D7 /* SSPhotoDisplayViewController.h */,
 				9A76B28916C504D80087B8D7 /* SSPhotoDisplayViewController.m */,
 				9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */,
@@ -235,6 +240,7 @@
 				9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */,
 				9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */,
 				9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */,
+				9AF5902016C8F20E005E631C /* SSDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

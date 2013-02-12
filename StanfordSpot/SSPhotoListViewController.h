@@ -8,14 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SSFlickrPhoto.h"
-#import "SSPhotoDisplayViewController.h"
 
 @interface SSPhotoListViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray* photoArray;
 @property (strong, nonatomic) NSSortDescriptor* sortDescriptor;
-
-@property (strong, nonatomic) SSPhotoDisplayViewController *targetDisplayView;
 
 /* Can be over-ridden by subclass if needed.  Adds selected photo to recents*/
 - (void) photoWasSelected:(SSFlickrPhoto*)photo;
