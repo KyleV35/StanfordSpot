@@ -13,8 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (nonatomic) BOOL hasBeenZoomed;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
-
 
 @end
 
@@ -61,7 +59,7 @@
             self.scrollView.zoomScale = 1.0f;
         }
     }
-    [self.titleBarButtonItem setTitle:self.title];
+
 }
 
 - (void)viewDidLoad
@@ -93,13 +91,9 @@
     CGFloat widthZoomFactor = self.scrollView.bounds.size.width/self.imageView.bounds.size.width;
     CGFloat heightZoomFactor = self.scrollView.bounds.size.height/self.imageView.bounds.size.height;
     CGFloat smallerZoomFactor = MAX(widthZoomFactor, heightZoomFactor);
-    CGFloat biggerZoomFactor = MIN(widthZoomFactor, heightZoomFactor);
-    //If the photo is too big, zoom out down to have the smaller dimension fit on screen
+    //If the smaller of the zoom factors is above one, force that dimension to fit on screen
     if (smallerZoomFactor < 1.0f) {
         return smallerZoomFactor > self.scrollView.minimumZoomScale ? smallerZoomFactor : self.scrollView.minimumZoomScale;
-    } // If the photo is too small, zoom in to eliminate white space
-    else if (biggerZoomFactor > 1.0f) {
-        return biggerZoomFactor < self.scrollView.maximumZoomScale ? biggerZoomFactor : self.scrollView.maximumZoomScale;
     }
     return self.scrollView.zoomScale;
 }
