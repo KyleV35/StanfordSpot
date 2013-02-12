@@ -77,7 +77,17 @@
     self.scrollView.minimumZoomScale = 0.2;
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
+    [self placeShowMasterButtonOnToolbar];
     [self resetImage];
+}
+
+- (void) placeShowMasterButtonOnToolbar
+{
+    if (self.showMasterButton) {
+        NSMutableArray* mutToolBarItems = [self.toolbar.items mutableCopy];
+        [mutToolBarItems insertObject:self.showMasterButton atIndex:0];
+        self.toolbar.items = mutToolBarItems;
+    }
 }
 
 - (void) viewDidLayoutSubviews

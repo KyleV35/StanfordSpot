@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSArray* photoArray;
 @property (strong, nonatomic) NSSortDescriptor* sortDescriptor;
+@property (weak, nonatomic) UIBarButtonItem* showMasterButton;
 
 /* Can be over-ridden by subclass if needed.  Adds selected photo to recents*/
 - (void) photoWasSelected:(SSFlickrPhoto*)photo;

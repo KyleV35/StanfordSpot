@@ -12,9 +12,12 @@
 #import "SSRecentlyViewedPhotos.h"
 #import "SSPhotoDisplayViewController.h"
 
-@interface SSTagListViewController ()
+@interface SSTagListViewController () <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary* tagDictionary;
+
+@property (weak, nonatomic) UISplitViewController* splitViewController;
+@property (strong, nonatomic) UIBarButtonItem* showMasterButton;
 
 /* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
@@ -82,6 +85,7 @@
         NSArray *photoArrayForTag = self.tagDictionary[tag];
         if ([segue.destinationViewController isKindOfClass:[SSPhotoListViewController class]]) {
             SSPhotoListViewController *vc = (SSPhotoListViewController*)segue.destinationViewController;
+            vc.showMasterButton = self.showMasterButton;
             vc.photoArray = photoArrayForTag;
             vc.title = [tag capitalizedString];
         } else {
@@ -137,6 +141,13 @@
     NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
     [mutToolBarItems insertObject:barButtonItem atIndex:0];
     detail.toolbar.items = mutToolBarItems;
+    self.showMasterButton = barButtonItem;
+    
+    UIViewController* otherViewController = [self.tabBarController.viewControllers lastObject];
+    if ([otherViewController respondsToSelector:@selector(setShowMasterButton:)]) {
+        [otherViewController performSelector:@selector(setShowMasterButton:) withObject:barButtonItem];
+    }
+    
 }
 
 - (void) splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
@@ -145,6 +156,22 @@
     NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
     [mutToolBarItems removeObject:barButtonItem];
     [detail.toolbar setItems:mutToolBarItems animated:YES];
+}
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (UISplitViewController*) splitViewController
+{
+    if (!_splitViewController) {
+        UIViewController* vc = self.tabBarController.parentViewController.parentViewController;
+        if ([vc isKindOfClass:[UISplitViewController class]]) {
+            _splitViewController = (UISplitViewController*)vc;
+        }
+    }
+    return _splitViewController;
 }
                     
 
