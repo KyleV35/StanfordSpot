@@ -10,7 +10,6 @@
 #import "SSPhotoListViewController.h"
 #import "FlickrFetcher.h"
 #import "SSRecentlyViewedPhotos.h"
-#import "SSPhotoDisplayViewController.h"
 
 @interface SSTagListViewController ()
 
@@ -20,8 +19,6 @@
 @property (strong, nonatomic) NSArray *tagList;
 
 @end
-
-#define DETAIL_VIEW_CONTROLLER_INDEX 1
 
 @implementation SSTagListViewController
 
@@ -123,28 +120,6 @@
         }
     }
     return [NSDictionary dictionaryWithDictionary:newTagDictionary];
-}
-
-#pragma mark UISplitViewControllerDelegate
-
-- (void) splitViewController:(UISplitViewController *)svc
-      willHideViewController:(UIViewController *)aViewController
-           withBarButtonItem:(UIBarButtonItem *)barButtonItem
-        forPopoverController:(UIPopoverController *)pc
-{
-    barButtonItem.title = @"Show";
-    SSPhotoDisplayViewController *detail = svc.viewControllers[DETAIL_VIEW_CONTROLLER_INDEX];
-    NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
-    [mutToolBarItems insertObject:barButtonItem atIndex:0];
-    detail.toolbar.items = mutToolBarItems;
-}
-
-- (void) splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    SSPhotoDisplayViewController *detail = svc.viewControllers[DETAIL_VIEW_CONTROLLER_INDEX];
-    NSMutableArray* mutToolBarItems = [detail.toolbar.items mutableCopy];
-    [mutToolBarItems removeObject:barButtonItem];
-    [detail.toolbar setItems:mutToolBarItems animated:YES];
 }
                     
 
