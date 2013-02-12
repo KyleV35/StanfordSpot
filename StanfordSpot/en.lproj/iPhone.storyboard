@@ -261,6 +261,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoDisplayViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="titleBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="SSPhotoListViewController" superclassName="UITableViewController">
