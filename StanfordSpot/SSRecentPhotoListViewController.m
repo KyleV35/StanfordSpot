@@ -22,11 +22,6 @@
     [self.tableView scrollsToTop];
 }
 
-- (void) photoWasSelected:(SSFlickrPhoto *)photo
-{
-    //Do nothing, don't want to add a photo from recents to recents
-}
-
 - (NSSortDescriptor*)sortDescriptor
 {
     // Don't sort recents, they are already sorted by time
