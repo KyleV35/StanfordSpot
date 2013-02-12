@@ -17,11 +17,12 @@
 
 @property (strong, nonatomic) NSDictionary* tagDictionary;
 
-@property (weak, nonatomic) UISplitViewController* splitViewController;
-@property (weak, nonatomic) SSRecentPhotoListViewController* recentsController;
-
 /* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
+
+/* iPad Exclusive */
+@property (weak, nonatomic) UISplitViewController* splitViewController;
+@property (weak, nonatomic) SSRecentPhotoListViewController* recentsController;
 
 @end
 
@@ -77,6 +78,8 @@
     
     return cell;
 }
+
+#pragma mark Segues
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
