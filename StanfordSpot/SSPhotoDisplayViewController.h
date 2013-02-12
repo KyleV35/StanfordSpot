@@ -11,5 +11,6 @@
 @interface SSPhotoDisplayViewController : UIViewController
 
 @property (strong, nonatomic) NSURL* imageURL;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
