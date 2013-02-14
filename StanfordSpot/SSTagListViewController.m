@@ -15,12 +15,12 @@
 
 @interface SSTagListViewController () <UISplitViewControllerDelegate>
 
-/* tagDictionary must be set to update tagList */
 @property (strong, nonatomic) NSDictionary* tagDictionary;
+
+/* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
 
 /* iPad Exclusive */
-@property (weak, nonatomic) UISplitViewController* splitViewController;
 @property (weak, nonatomic) SSRecentPhotoListViewController* recentsController;
 
 @end
@@ -32,10 +32,17 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    // Load tag list async
+    // Load Tags Async
     [self loadTagList];
     [self.refreshControl addTarget:self action:@selector(loadTagList) forControlEvents:UIControlEventValueChanged];
 }
+
+- (void)awakeFromNib
+{
+    //Only relevant to iPad
+    self.splitViewController.delegate = self;
+}
+
 
 # pragma mark - Setters
 
@@ -97,6 +104,7 @@
     }
 }
 
+
 #pragma mark UISplitViewControllerDelegate
 
 - (void) splitViewController:(UISplitViewController *)svc
@@ -132,13 +140,6 @@
     recents.showListsButton = nil;
 }
 
-#pragma mark iPad helpers
-
-- (void)awakeFromNib
-{
-    self.splitViewController.delegate = self;
-}
-
 #define RECENTS_TAB_BAR_INDEX 1
 
 - (SSRecentPhotoListViewController*) recentsController
@@ -157,20 +158,6 @@
     }
 }
 
-- (void)loadTagList
-{
-    dispatch_queue_t downloadTagQueue = dispatch_queue_create("Download Tags", NULL);
-    [self.refreshControl beginRefreshing];
-    dispatch_async(downloadTagQueue, ^{
-        NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSArray* photos = [self getPhotoArrayWithDictArray:photoDicts];
-            self.tagDictionary = [self createTagListDictionaryWithPhotoArray:photos];
-            [self.refreshControl endRefreshing];
-        });
-        
-    });
-}
 
 #pragma mark Helper Methods
 
@@ -192,7 +179,7 @@
     return [NSDictionary dictionaryWithDictionary:newTagDictionary];
 }
 
-/* Takes an array of dictionarys recieved from Flicker and converts them to SSFlickerPhotos */
+/* Converts an array of NSDictionaries from Flickr to an array of SSFlickrPhotos */
 - (NSArray*)getPhotoArrayWithDictArray:(NSArray*)dictArray
 {
     NSMutableArray *mutablePhotos = [[NSMutableArray alloc] init];
@@ -201,7 +188,24 @@
         [mutablePhotos addObject:photo];
     }
     return [NSArray arrayWithArray:mutablePhotos];
-    
+
+}
+
+/* Asyncronously grabs tags from Flickr and updates self.tagDictionary with new tags */
+- (void)loadTagList
+{
+    dispatch_queue_t downloadTagQueue = dispatch_queue_create("Download Tags", NULL);
+    [self.refreshControl beginRefreshing];
+    dispatch_async(downloadTagQueue, ^{
+        NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Take care of UIKit operations on main thread
+            NSArray* photos = [self getPhotoArrayWithDictArray:photoDicts];
+            self.tagDictionary = [self createTagListDictionaryWithPhotoArray:photos];
+            [self.refreshControl endRefreshing];
+        });
+        
+    });
 }
 
 

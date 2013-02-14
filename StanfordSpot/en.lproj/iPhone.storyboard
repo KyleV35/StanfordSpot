@@ -124,6 +124,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sgW-Vj-wpn"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CmC-cm-9Iq">
                                 <connections>
                                     <outlet property="delegate" destination="RaB-P8-Hcc" id="igW-Ie-RXD"/>
@@ -132,15 +133,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="leading" secondItem="V4x-sM-tW5" secondAttribute="leading" type="default" id="ETj-PT-ot4"/>
-                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="trailing" secondItem="V4x-sM-tW5" secondAttribute="trailing" type="default" id="G1m-AI-H2h"/>
+                            <constraint firstItem="sgW-Vj-wpn" firstAttribute="centerY" secondItem="CmC-cm-9Iq" secondAttribute="centerY" type="default" id="JT0-cj-GgW"/>
                             <constraint firstItem="CmC-cm-9Iq" firstAttribute="top" secondItem="V4x-sM-tW5" secondAttribute="top" type="default" id="ime-gE-CMu"/>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="leading" secondItem="V4x-sM-tW5" secondAttribute="leading" type="default" id="lkW-bk-S11"/>
+                            <constraint firstItem="CmC-cm-9Iq" firstAttribute="trailing" secondItem="V4x-sM-tW5" secondAttribute="trailing" type="default" id="mT1-aw-yaY"/>
                             <constraint firstItem="CmC-cm-9Iq" firstAttribute="bottom" secondItem="V4x-sM-tW5" secondAttribute="bottom" type="default" id="u0p-oy-Vnk"/>
+                            <constraint firstItem="sgW-Vj-wpn" firstAttribute="centerX" secondItem="CmC-cm-9Iq" secondAttribute="centerX" type="default" id="wEM-DY-b4T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0t1-CX-caR"/>
                     <connections>
                         <outlet property="scrollView" destination="CmC-cm-9Iq" id="Q5x-V5-fzm"/>
+                        <outlet property="spinner" destination="sgW-Vj-wpn" id="QcL-cR-xBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvL-HP-JwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,6 +204,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-fn-DGo"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzO-aG-MeD">
                                 <connections>
                                     <outlet property="delegate" destination="BQh-9v-jQg" id="BkW-Kc-STd"/>
@@ -209,7 +214,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OzO-aG-MeD" firstAttribute="trailing" secondItem="i1N-8w-LS8" secondAttribute="trailing" type="default" id="1Ab-BX-HyU"/>
+                            <constraint firstItem="IX6-fn-DGo" firstAttribute="centerX" secondItem="OzO-aG-MeD" secondAttribute="centerX" type="default" id="2eh-Ct-7uf"/>
                             <constraint firstItem="OzO-aG-MeD" firstAttribute="leading" secondItem="i1N-8w-LS8" secondAttribute="leading" type="default" id="JqU-aW-vM3"/>
+                            <constraint firstItem="IX6-fn-DGo" firstAttribute="centerY" secondItem="OzO-aG-MeD" secondAttribute="centerY" type="default" id="YDG-XC-1aV"/>
                             <constraint firstItem="OzO-aG-MeD" firstAttribute="bottom" secondItem="i1N-8w-LS8" secondAttribute="bottom" type="default" id="kte-RN-Wv0"/>
                             <constraint firstItem="OzO-aG-MeD" firstAttribute="top" secondItem="i1N-8w-LS8" secondAttribute="top" type="default" id="too-es-igQ"/>
                         </constraints>
@@ -217,6 +224,7 @@
                     <navigationItem key="navigationItem" id="8iR-5h-ic2"/>
                     <connections>
                         <outlet property="scrollView" destination="OzO-aG-MeD" id="tLh-a5-ANX"/>
+                        <outlet property="spinner" destination="IX6-fn-DGo" id="n28-6H-NaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spr-Pa-Yzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,6 +272,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoDisplayViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="titleBarButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>

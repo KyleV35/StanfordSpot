@@ -68,7 +68,8 @@
         if ([segue.destinationViewController isKindOfClass:[SSPhotoDisplayViewController class]]) {
             [self photoWasSelected:photo];
             SSPhotoDisplayViewController *vc = (SSPhotoDisplayViewController*)segue.destinationViewController;
-            vc.imageURL = [FlickrFetcher urlForPhoto:photo.photoDict format:FlickrPhotoFormatLarge];
+            FlickrPhotoFormat format = self.splitViewController ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
+            vc.imageURL = [FlickrFetcher urlForPhoto:photo.photoDict format:format];
             vc.showListsButton = self.showListsButton;
             vc.title = photo.title;
         } else {

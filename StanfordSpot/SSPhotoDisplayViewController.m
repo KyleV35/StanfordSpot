@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIImageView *imageView;
 @property (nonatomic) BOOL hasBeenZoomed;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 
 @end
@@ -53,14 +54,30 @@
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        if (image) {
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-            self.scrollView.zoomScale = 1.0f;
-        }
+        NSURL* imageURL = self.imageURL;
+        dispatch_queue_t downloadQueue = dispatch_queue_create("Photo Download", NULL);
+        [self.spinner startAnimating];
+        dispatch_async(downloadQueue, ^{
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            
+            //UIImage is thread safe, okay to do here
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            //Check to make sure the user is still waiting for the image to download
+            if (imageURL == self.imageURL) {
+                
+                // Dispatch to main thread to do UIKit work
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (image) {
+                        self.scrollView.contentSize = image.size;
+                        self.imageView.image = image;
+                        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                        self.scrollView.zoomScale = [self autoCalculateZoomValue];
+                    }
+                    [self.spinner stopAnimating];
+                });
+            }
+        });
+        
     }
     [self.titleBarButtonItem setTitle:self.title];
 }

@@ -17,6 +17,7 @@
                                     <outlet property="delegate" destination="sXL-Fh-qaU" id="iZf-iS-IwX"/>
                                 </connections>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IcX-Vx-OPe"/>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JM0-0W-NQD">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DnW-Y9-wmG"/>
@@ -31,6 +32,8 @@
                             <constraint firstItem="d6E-H2-rfG" firstAttribute="trailing" secondItem="KF7-Ks-NGD" secondAttribute="trailing" type="default" id="3Yl-2E-5Fz"/>
                             <constraint firstItem="JM0-0W-NQD" firstAttribute="top" secondItem="KF7-Ks-NGD" secondAttribute="top" type="default" id="9qm-If-HUW"/>
                             <constraint firstItem="JM0-0W-NQD" firstAttribute="leading" secondItem="KF7-Ks-NGD" secondAttribute="leading" type="default" id="VpN-HX-9Nt"/>
+                            <constraint firstItem="IcX-Vx-OPe" firstAttribute="centerX" secondItem="JM0-0W-NQD" secondAttribute="centerX" type="default" id="ZUg-3f-fRZ"/>
+                            <constraint firstItem="IcX-Vx-OPe" firstAttribute="centerY" secondItem="d6E-H2-rfG" secondAttribute="centerY" type="default" id="dTX-Z1-vg1"/>
                             <constraint firstItem="d6E-H2-rfG" firstAttribute="bottom" secondItem="KF7-Ks-NGD" secondAttribute="bottom" type="default" id="tBZ-rn-HOA"/>
                             <constraint firstItem="d6E-H2-rfG" firstAttribute="leading" secondItem="KF7-Ks-NGD" secondAttribute="leading" type="default" id="tzo-BS-ytt"/>
                             <constraint firstItem="JM0-0W-NQD" firstAttribute="trailing" secondItem="KF7-Ks-NGD" secondAttribute="trailing" type="default" id="w5L-1M-tNt"/>
@@ -39,6 +42,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="scrollView" destination="d6E-H2-rfG" id="As1-lN-lQK"/>
+                        <outlet property="spinner" destination="IcX-Vx-OPe" id="Ncq-kr-cQ5"/>
                         <outlet property="titleBarButtonItem" destination="4UM-hy-tHU" id="BHD-Cg-kl5"/>
                         <outlet property="toolbar" destination="JM0-0W-NQD" id="b0f-xe-0zR"/>
                     </connections>
@@ -186,6 +190,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="u02-zt-Ec3"/>
                     <navigationItem key="navigationItem" title="SPoT" id="KyC-EH-Zuq"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="tIY-PC-7fP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5q-Mg-E5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -251,6 +258,32 @@
             <point key="canvasLocation" x="-653" y="-305"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SSPhotoDisplayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoDisplayViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="titleBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="SSPhotoListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPhotoListViewController.h"/>
+        </class>
+        <class className="SSRecentPhotoListViewController" superclassName="SSPhotoListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSRecentPhotoListViewController.h"/>
+        </class>
+        <class className="SSTagListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTagListViewController.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
