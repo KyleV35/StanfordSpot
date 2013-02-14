@@ -15,9 +15,8 @@
 
 @interface SSTagListViewController () <UISplitViewControllerDelegate>
 
+/* tagDictionary must be set to update tagList */
 @property (strong, nonatomic) NSDictionary* tagDictionary;
-
-/* If tagDictionary is changed, tagList must be set to nil and repopulated*/
 @property (strong, nonatomic) NSArray *tagList;
 
 /* iPad Exclusive */
@@ -30,24 +29,21 @@
 
 @implementation SSTagListViewController
 
-#pragma mark Lazy Instantiation
-
-- (NSDictionary*)tagDictionary
+- (void) viewDidLoad
 {
-    if (!_tagDictionary) {
-        self.tagList = nil;
-        NSArray *photos = [self getPhotoArray];
-        _tagDictionary = [self createTagListDictionaryWithPhotoArray:photos];
-    }
-    return _tagDictionary;
+    [super viewDidLoad];
+    // Load tag list async
+    [self loadTagList];
+    [self.refreshControl addTarget:self action:@selector(loadTagList) forControlEvents:UIControlEventValueChanged];
 }
 
-- (NSArray*)tagList
+# pragma mark - Setters
+
+- (void) setTagDictionary:(NSDictionary *)tagDictionary
 {
-    if (!_tagList) {
-        _tagList = [[self.tagDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
-    }
-    return _tagList;
+    _tagDictionary= tagDictionary;
+    _tagList = [[self.tagDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -101,38 +97,6 @@
     }
 }
 
-#pragma mark Helper Methods
-
-/* Returns an array of SSFlickrPhotos */
-- (NSArray*) getPhotoArray
-{
-    NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
-    NSMutableArray *mutablePhotoDicts = [[NSMutableArray alloc] init];
-    for (NSDictionary* dict in photoDicts) {
-        SSFlickrPhoto* photo = [[SSFlickrPhoto alloc] initWithPhotoDictionary:dict];
-        [mutablePhotoDicts addObject:photo];
-    }
-    return [NSArray arrayWithArray:mutablePhotoDicts];
-}
-
-/* Create a dictionary that maps from tags to an array of photos associated with those tags.  This is completed by iterating through each photo, grabbing its tags, then adding that same photo to the photo array for each tag. */
-- (NSDictionary*)createTagListDictionaryWithPhotoArray:(NSArray*)photos
-{
-    NSMutableDictionary *newTagDictionary = [[NSMutableDictionary alloc] init];
-    for (SSFlickrPhoto* photo in photos) {
-        for (NSString* tag in photo.tags) {
-            NSMutableArray* value = [newTagDictionary objectForKey:tag];
-            if (value == nil) {
-                value = [NSMutableArray arrayWithObject:photo];
-            } else {
-                [value addObject:photo];
-            }
-            [newTagDictionary setObject:value forKey:tag];
-        }
-    }
-    return [NSDictionary dictionaryWithDictionary:newTagDictionary];
-}
-
 #pragma mark UISplitViewControllerDelegate
 
 - (void) splitViewController:(UISplitViewController *)svc
@@ -175,17 +139,6 @@
     self.splitViewController.delegate = self;
 }
 
-- (UISplitViewController*) splitViewController
-{
-    if (!_splitViewController) {
-        UIViewController* vc = self.tabBarController.parentViewController;
-        if ([vc isKindOfClass:[UISplitViewController class]]) {
-            _splitViewController = (UISplitViewController*)vc;
-        }
-    }
-    return _splitViewController;
-}
-
 #define RECENTS_TAB_BAR_INDEX 1
 
 - (SSRecentPhotoListViewController*) recentsController
@@ -203,7 +156,54 @@
         }
     }
 }
-                    
+
+- (void)loadTagList
+{
+    dispatch_queue_t downloadTagQueue = dispatch_queue_create("Download Tags", NULL);
+    [self.refreshControl beginRefreshing];
+    dispatch_async(downloadTagQueue, ^{
+        NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSArray* photos = [self getPhotoArrayWithDictArray:photoDicts];
+            self.tagDictionary = [self createTagListDictionaryWithPhotoArray:photos];
+            [self.refreshControl endRefreshing];
+        });
+        
+    });
+}
+
+#pragma mark Helper Methods
+
+/* Create a dictionary that maps from tags to an array of photos associated with those tags.  This is completed by iterating through each photo, grabbing its tags, then adding that same photo to the photo array for each tag. */
+- (NSDictionary*)createTagListDictionaryWithPhotoArray:(NSArray*)photos
+{
+    NSMutableDictionary *newTagDictionary = [[NSMutableDictionary alloc] init];
+    for (SSFlickrPhoto* photo in photos) {
+        for (NSString* tag in photo.tags) {
+            NSMutableArray* value = [newTagDictionary objectForKey:tag];
+            if (value == nil) {
+                value = [NSMutableArray arrayWithObject:photo];
+            } else {
+                [value addObject:photo];
+            }
+            [newTagDictionary setObject:value forKey:tag];
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:newTagDictionary];
+}
+
+/* Takes an array of dictionarys recieved from Flicker and converts them to SSFlickerPhotos */
+- (NSArray*)getPhotoArrayWithDictArray:(NSArray*)dictArray
+{
+    NSMutableArray *mutablePhotos = [[NSMutableArray alloc] init];
+    for (NSDictionary* dict in dictArray) {
+        SSFlickrPhoto* photo = [[SSFlickrPhoto alloc] initWithPhotoDictionary:dict];
+        [mutablePhotos addObject:photo];
+    }
+    return [NSArray arrayWithArray:mutablePhotos];
+    
+}
+
 
 
 @end

@@ -63,6 +63,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="SPoT" id="ouf-VZ-bc1"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4mR-gg-G7g">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fby-NR-rvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,6 +276,9 @@
         </class>
         <class className="SSTagListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTagListViewController.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
