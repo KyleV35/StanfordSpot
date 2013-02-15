@@ -12,6 +12,7 @@
 #import "SSRecentlyViewedPhotos.h"
 #import "SSPhotoDisplayViewController.h"
 #import "SSRecentPhotoListViewController.h"
+#import "SSNetworkActivityCounter.h"
 
 @interface SSTagListViewController () <UISplitViewControllerDelegate>
 
@@ -197,7 +198,9 @@
     dispatch_queue_t downloadTagQueue = dispatch_queue_create("Download Tags", NULL);
     [self.refreshControl beginRefreshing];
     dispatch_async(downloadTagQueue, ^{
+        [[SSNetworkActivityCounter sharedInstance] increment];
         NSArray *photoDicts = [FlickrFetcher stanfordPhotos];
+        [[SSNetworkActivityCounter sharedInstance] decrement];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Take care of UIKit operations on main thread
             NSArray* photos = [self getPhotoArrayWithDictArray:photoDicts];

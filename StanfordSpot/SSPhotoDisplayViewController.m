@@ -7,6 +7,7 @@
 //
 
 #import "SSPhotoDisplayViewController.h"
+#import "SSNetworkActivityCounter.h"
 
 @interface SSPhotoDisplayViewController () <UIScrollViewDelegate>
 
@@ -58,7 +59,9 @@
         dispatch_queue_t downloadQueue = dispatch_queue_create("Photo Download", NULL);
         [self.spinner startAnimating];
         dispatch_async(downloadQueue, ^{
+            [[SSNetworkActivityCounter sharedInstance] increment];
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            [[SSNetworkActivityCounter sharedInstance] decrement];
             
             //UIImage is thread safe, okay to do here
             UIImage *image = [[UIImage alloc] initWithData:imageData];
