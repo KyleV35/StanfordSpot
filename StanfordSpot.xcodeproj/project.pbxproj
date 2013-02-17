@@ -25,6 +25,7 @@
 		9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */; };
 		9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */; };
 		9AE2543916C8DDBA00E1266F /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2543816C8DDBA00E1266F /* iPad.storyboard */; };
+		9AEDF3FE16CDAFCA0061F30F /* SSNetworkActivityCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEDF3FD16CDAFCA0061F30F /* SSNetworkActivityCounter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		9AE2542816C5A8FC00E1266F /* SSRecentPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRecentPhotoListViewController.h; sourceTree = "<group>"; };
 		9AE2542916C5A8FC00E1266F /* SSRecentPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRecentPhotoListViewController.m; sourceTree = "<group>"; };
 		9AE2543816C8DDBA00E1266F /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		9AEDF3FC16CDAFCA0061F30F /* SSNetworkActivityCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNetworkActivityCounter.h; path = Model/SSNetworkActivityCounter.h; sourceTree = "<group>"; };
+		9AEDF3FD16CDAFCA0061F30F /* SSNetworkActivityCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNetworkActivityCounter.m; path = Model/SSNetworkActivityCounter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				9A76B28316C4EA540087B8D7 /* SSFlickrPhoto.m */,
 				9AE2542416C5A05600E1266F /* SSRecentlyViewedPhotos.h */,
 				9AE2542516C5A05600E1266F /* SSRecentlyViewedPhotos.m */,
+				9AEDF3FC16CDAFCA0061F30F /* SSNetworkActivityCounter.h */,
+				9AEDF3FD16CDAFCA0061F30F /* SSNetworkActivityCounter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				9A76B28A16C504D90087B8D7 /* SSPhotoDisplayViewController.m in Sources */,
 				9AE2542616C5A05600E1266F /* SSRecentlyViewedPhotos.m in Sources */,
 				9AE2542A16C5A8FC00E1266F /* SSRecentPhotoListViewController.m in Sources */,
+				9AEDF3FE16CDAFCA0061F30F /* SSNetworkActivityCounter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
