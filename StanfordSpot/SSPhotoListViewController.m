@@ -10,6 +10,7 @@
 #import "SSPhotoDisplayViewController.h"
 #import "FlickrFetcher.h"
 #import "SSRecentlyViewedPhotos.h"
+#import "SSPhotoCache.h"
 
 @interface SSPhotoListViewController ()
 

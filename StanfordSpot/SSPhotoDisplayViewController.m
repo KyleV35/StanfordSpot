@@ -8,6 +8,7 @@
 
 #import "SSPhotoDisplayViewController.h"
 #import "SSNetworkActivityCounter.h"
+#import "SSPhotoCache.h"
 
 @interface SSPhotoDisplayViewController () <UIScrollViewDelegate>
 
@@ -56,12 +57,23 @@
         self.imageView.image = nil;
         
         NSURL* imageURL = self.imageURL;
+        SSPhotoCache* cache = [SSPhotoCache sharedInstance];
+        BOOL photoIsCached = [cache photoIsInCache:imageURL];
         dispatch_queue_t downloadQueue = dispatch_queue_create("Photo Download", NULL);
         [self.spinner startAnimating];
         dispatch_async(downloadQueue, ^{
-            [[SSNetworkActivityCounter sharedInstance] increment];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-            [[SSNetworkActivityCounter sharedInstance] decrement];
+            NSData *imageData= nil;
+            
+            if (!photoIsCached) {
+                // Photo not cached, read from network then cache
+                [[SSNetworkActivityCounter sharedInstance] increment];
+                imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                [[SSNetworkActivityCounter sharedInstance] decrement];
+                [cache putPhotoDataInCache:imageData withURL:self.imageURL];
+            } else {
+                // Photo was cached, read from disk
+                imageData = [cache dataForPhotoInCache:self.imageURL];
+            }
             
             //UIImage is thread safe, okay to do here
             UIImage *image = [[UIImage alloc] initWithData:imageData];
